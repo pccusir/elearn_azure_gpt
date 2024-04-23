@@ -3,10 +3,11 @@ from azure.ai.textanalytics import TextAnalyticsClient
 from azure.core.credentials import AzureKeyCredential
 from azure.data.tables import TableServiceClient
 
+import tempfile, os
+
 def authenticate_client():
-    key = "<your_azure_key>"
-    endpoint = "<your_azure_endpoint>"
-    ta_credential = AzureKeyCredential(key)
+    endpoint = os.getenv('END_POINT')
+    ta_credential = AzureKeyCredential(os.getenv('AZURE_KEY'))
     text_analytics_client = TextAnalyticsClient(
             endpoint=endpoint, 
             credential=ta_credential)
@@ -27,8 +28,8 @@ def analyze_text():
 
 @app.route('/database')
 def database_access():
-    connection_string = "<your_azure_sql_database_connection_string>"
-    table_name = "<your_table_name>"
+    connection_string = os.getenv('SQL_CONNECTION_STRING')
+    table_name = os.getenv('TABLE_NAME')
     table_service_client = TableServiceClient.from_connection_string(connection_string)
     table_client = table_service_client.get_table_client(table_name)
     rows = table_client.query_entities()

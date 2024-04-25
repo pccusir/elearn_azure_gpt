@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>Student Database Management</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <h1>Welcome to our Text Analysis App!</h1>
-    <form action="/analyze" method="post">
-        <label for="text">Enter text:</label><br>
-        <textarea id="text" name="text" rows="4" cols="50"></textarea><br>
-        <input type="submit" value="Analyze">
+    <h1>Student Database Management</h1>
+
+    <h2>Add Student</h2>
+    <form id="add-student-form">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <input type="submit" value="Add Student">
     </form>
+
+    <h2>Delete Student</h2>
+    <form id="delete-student-form">
+        <label for="id">ID:</label><br>
+        <input type="text" id="id" name="id"><br>
+        <input type="submit" value="Delete Student">
+    </form>
+
+    <h2>Students</h2>
+    <button id="get-students-button">Get Students</button>
+    <div id="students"></div>
+
+    <script src="app.js"></script>
 </body>
 </html>
